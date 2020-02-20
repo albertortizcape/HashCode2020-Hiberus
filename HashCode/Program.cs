@@ -40,7 +40,7 @@ namespace HashCode
                 // tercera linea 
                 if (cont == 3)
                 {
-                    resolver.ReadScoreLine(line);
+                    resolver.ReadDefineLibrary(line);
                 }
                 // cuarta 
                 if (cont == 4)
