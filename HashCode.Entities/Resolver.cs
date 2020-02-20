@@ -29,7 +29,7 @@ namespace HashCode.Entities
             BookList = new List<Book>();
 
             string[] dta = secondLine.Split(' ');
-            for (int i = 0; 0 < dta.Length; i++)
+            for (int i = 0; i < dta.Length-1; i++)
             {
                 var book = new Book();
                 book.Id = i;
@@ -57,11 +57,12 @@ namespace HashCode.Entities
         {
             // En la última librería, añadir los libros del array de libros
             var library = Libraries[libraryId];
-
+            library.Libros = new List<Book>();
             string[] dta = booksId.Split(' ');
-            for (int i = 0; i < dta.Length; i++)
+            for (int i = 0; i < dta.Length-1; i++)
             {
                 var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
+           
                 library.Libros.Add(book);
             }
         }
