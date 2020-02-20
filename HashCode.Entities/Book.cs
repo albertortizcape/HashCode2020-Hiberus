@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HashCode.Entities
 {
-    public class Class1
+    public class Book
     {
-        public int MyProperty { get; set; }
+        public int Id { get; set; }
+        public int Puntuacion { get; set; }
     }
 }
