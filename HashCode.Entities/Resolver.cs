@@ -56,9 +56,7 @@ namespace HashCode.Entities
         public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
-            var library = new Library();
-            library.LibraryId = libraryId;
-            Libraries.Add(library);
+            var library = Libraries[libraryId];
 
             string[] dta = booksId.Split(' ');
             for (int i = 0; i < dta.Length; i++)
@@ -68,7 +66,7 @@ namespace HashCode.Entities
             }
         }
 
-        public void Result()
+        public string Result()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -77,31 +75,53 @@ namespace HashCode.Entities
             // Primera respuesta: Numero de librerías que se pueden escanear
             sb.AppendLine(librariesThatWillBeScanned.Count.ToString());
 
-            
-            foreach (Library lib in librariesThatWillBeScanned)
-            {
-                sb.Append(lib.LibraryId.ToString());
-                sb.Append(" ");
+            // Resto de respuesta:
+            GetRestOfTheFile(sb, librariesThatWillBeScanned);
 
-                //int numDays
-                //List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary();
-
-                //sb.AppendLine(librosEscanear);
-
-                // Segunda línea: librerías que se van a escanear 
-
-                // Tercera línea: 
-            }
-
+            return sb.ToString();
         }
 
-        private int BooksThatWillBeScannedFromLibrary()
+        private void GetRestOfTheFile(StringBuilder sb, List<Library> librariesThatWillBeScanned)
         {
-            throw new NotImplementedException();
+            foreach (Library lib in librariesThatWillBeScanned)
+            {
+                GetLibraryString(sb, lib);
+            }
+        }
+
+        private void GetLibraryString(StringBuilder sb, Library lib)
+        {
+            int numDays;
+            List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary(numDays, lib);
+
+            GetFirstLineFromLibrary(sb, lib.LibraryId, librosEscanear);
+
+            GetSecondLineFromLibrary(sb, librosEscanear);
+        }
+
+        private void GetSecondLineFromLibrary(StringBuilder sb, List<Book> librosEscanear)
+        {
+            foreach (Book book in librosEscanear)
+            {
+                sb.Append(book.Id);
+                sb.Append(" ");
+            }
+
+            sb.AppendLine();
+        }
+
+        private void GetFirstLineFromLibrary(StringBuilder sb, int libraryId, List<Book> librosEscanear)
+        {
+            sb.Append(libraryId);
+            sb.Append(" ");
+            sb.AppendLine(librosEscanear.Count.ToString());
         }
 
         private List<Library> GetOptimizedLibrariesPerDays()
         {
+            // Coger el número de días que tengo totales
+            // Recorrer todas las librerías e ir descontando tiempo hasta que el resultado sea 0 (nunca menor que 0)
+            // Devolver las librerías que se pueden escanear en esos días
             throw new NotImplementedException();
         }
     }
