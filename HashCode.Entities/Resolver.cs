@@ -91,12 +91,27 @@ namespace HashCode.Entities
 
         private void GetLibraryString(StringBuilder sb, Library lib)
         {
-            int numDaysFromSignedUp = 0;
+            int numDaysFromSignedUp = lib.StartDay;
             List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary(numDaysFromSignedUp, lib);
 
             GetFirstLineFromLibrary(sb, lib.LibraryId, librosEscanear);
 
             GetSecondLineFromLibrary(sb, librosEscanear);
+        }
+
+        private List<Book> BooksThatWillBeScannedFromLibrary(int numDaysFromSignedUp, Library lib)
+        {
+            int numTotalDays = DiasEscaneo - numDaysFromSignedUp;
+            int numTotalBooks = numTotalDays * lib.NumeroLibrosEnvioDia;
+
+            List<Book> totalBooksScanned = new List<Book>();
+            for (int i = 0; i <= numTotalBooks; i++)
+            {
+                var book = lib.Libros[i];
+                totalBooksScanned.Add(book);
+            }
+
+            return totalBooksScanned;
         }
 
         private void GetSecondLineFromLibrary(StringBuilder sb, List<Book> librosEscanear)
