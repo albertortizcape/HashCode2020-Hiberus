@@ -9,7 +9,7 @@ namespace HashCode.Entities
     public class Resolver
     {
         public int NumeroLibros { get; set; }
-        public Library[] Libraries { get; set; }
+        public List<Library> Libraries { get; set; }
         public int DiasEscaneo { get; set; }
 
         public List<Book> BookList;
@@ -39,9 +39,18 @@ namespace HashCode.Entities
             }
         }
 
-        public void ReadDefineLibrary()
+        public void ReadDefineLibrary(string linea)
         {
+            string[] dta = linea.Split(' ');
+            int numeroLibro = int.Parse(dta[0]);
+            int numeroDias = int.Parse(dta[1]);
+            int numeroEnvio = int.Parse(dta[2]);
 
+            Library libra = new Library();
+            libra.NumeroLibrosEnvioDia = numeroEnvio;
+            libra.DiasTotalesRegistro = numeroDias;
+
+            Libraries.Add(libra);
         }
 
         public void ReadBooksId(string booksId, int libraryId)
