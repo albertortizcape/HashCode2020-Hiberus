@@ -45,7 +45,7 @@ namespace HashCode
                 // cuarta 
                 if (cont == 4)
                 {
-                    resolver.ReadScoreLine(line);
+                    resolver.ReadDefineLibrary(line);
                 }
 
                 if (cont > 4)
