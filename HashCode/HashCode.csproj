@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HashCode.Entities\HashCode.Entities.csproj">
+      <Project>{eeadf7ca-48ac-448f-9785-0c34606ce12b}</Project>
+      <Name>HashCode.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

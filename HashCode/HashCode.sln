@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCode", "HashCode.csproj", "{0EE78CAB-5FC4-4152-8350-9F1D3F8D34C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCode.Entities", "..\HashCode.Entities\HashCode.Entities.csproj", "{EEADF7CA-48AC-448F-9785-0C34606CE12B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0EE78CAB-5FC4-4152-8350-9F1D3F8D34C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE78CAB-5FC4-4152-8350-9F1D3F8D34C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE78CAB-5FC4-4152-8350-9F1D3F8D34C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEADF7CA-48AC-448F-9785-0C34606CE12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEADF7CA-48AC-448F-9785-0C34606CE12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEADF7CA-48AC-448F-9785-0C34606CE12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEADF7CA-48AC-448F-9785-0C34606CE12B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

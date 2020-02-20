@@ -5,3 +5,5 @@ packages/
 *.vssscc
 HashCode.Entities/obj
 HashCode/obj
+HashCode.Entities/bin
+HashCode/bin
