@@ -12,7 +12,7 @@ namespace HashCode
     {
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\ruta\archivo.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\a.txt");
             System.Console.WriteLine("Contenido del archivo = ");
 
 
@@ -22,10 +22,12 @@ namespace HashCode
             Resolver resolver = new Resolver();
 
             int cont = 0;
+            int idLibreria = 0;
             foreach (string line in lines)
             {
 
                 cont++;
+        
 
                 // primera linea
                 if (cont == 1)
@@ -40,18 +42,20 @@ namespace HashCode
                 // tercera linea 
                 if (cont == 3)
                 {
-                    resolver.ReadScoreLine(line);
+                    resolver.ReadDefineLibrary(line);
                 }
                 // cuarta 
                 if (cont == 4)
                 {
-                    resolver.ReadDefineLibrary(line);
+                    resolver.ReadBooksId(line, idLibreria);
                 }
 
                 if (cont > 4)
                 {
                     cont = 2;
+                    idLibreria++;
                 }
+          
 
 
 
