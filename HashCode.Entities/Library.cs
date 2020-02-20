@@ -8,6 +8,7 @@ namespace HashCode.Entities
 {
     public class Library
     {
+        public int LibraryId { get; set; }
         public List<Book> Libros { get; set; }
 
         // Número de días que cuesta realizar el registro de todos los libros
