@@ -59,7 +59,24 @@ namespace HashCode.Entities
 
         public void Result()
         {
-            
+            StringBuilder sb = new StringBuilder();
+
+            List<Library> librariesThatWillBeScanned = GetOptimizedLibrariesPerDays();
+
+            // Primera respuesta: Numero de librerías que se pueden escanear
+            sb.AppendLine(librariesThatWillBeScanned.Count.ToString());
+
+            // Segunda línea: librerías que se van a escanear 
+            foreach (Library lib in librariesThatWillBeScanned)
+            {
+                sb.AppendLine(lib.LibraryId)
+            }
+
+        }
+
+        private List<Library> GetOptimizedLibrariesPerDays()
+        {
+            throw new NotImplementedException();
         }
     }
 }
