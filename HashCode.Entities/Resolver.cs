@@ -20,7 +20,7 @@ namespace HashCode.Entities
             NumeroLibros = int.Parse(dta[0]);
             int numLibraries = int.Parse(dta[1]);
 
-            Libraries = new Library[numLibraries];
+            Libraries = new List<Library>();
             DiasEscaneo = int.Parse(dta[2]);
         }
 
@@ -56,7 +56,9 @@ namespace HashCode.Entities
         public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
-            var library = Libraries[libraryId];
+            var library = new Library();
+            library.LibraryId = libraryId;
+            Libraries.Add(library);
 
             string[] dta = booksId.Split(' ');
             for (int i = 0; i < dta.Length; i++)
@@ -75,12 +77,27 @@ namespace HashCode.Entities
             // Primera respuesta: Numero de librerías que se pueden escanear
             sb.AppendLine(librariesThatWillBeScanned.Count.ToString());
 
-            // Segunda línea: librerías que se van a escanear 
+            
             foreach (Library lib in librariesThatWillBeScanned)
             {
-                sb.AppendLine(lib.LibraryId)
+                sb.Append(lib.LibraryId.ToString());
+                sb.Append(" ");
+
+                //int numDays
+                //List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary();
+
+                //sb.AppendLine(librosEscanear);
+
+                // Segunda línea: librerías que se van a escanear 
+
+                // Tercera línea: 
             }
 
+        }
+
+        private int BooksThatWillBeScannedFromLibrary()
+        {
+            throw new NotImplementedException();
         }
 
         private List<Library> GetOptimizedLibrariesPerDays()
