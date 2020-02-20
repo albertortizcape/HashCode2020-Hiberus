@@ -20,7 +20,7 @@ namespace HashCode.Entities
             NumeroLibros = int.Parse(dta[0]);
             int numLibraries = int.Parse(dta[1]);
 
-            Libraries = new Library[numLibraries];
+            Libraries = new List<Library>();
             DiasEscaneo = int.Parse(dta[2]);
         }
 
@@ -53,25 +53,56 @@ namespace HashCode.Entities
             Libraries.Add(libra);
         }
 
-        public void ReadBooksId(string booksId)
+        public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
+            var library = new Library();
+            library.LibraryId = libraryId;
+            Libraries.Add(library);
 
             string[] dta = booksId.Split(' ');
             for (int i = 0; i < dta.Length; i++)
             {
-
-
                 var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
-
-
+                library.Libros.Add(book);
             }
-
         }
 
         public void Result()
         {
+            StringBuilder sb = new StringBuilder();
+
+            List<Library> librariesThatWillBeScanned = GetOptimizedLibrariesPerDays();
+
+            // Primera respuesta: Numero de librerías que se pueden escanear
+            sb.AppendLine(librariesThatWillBeScanned.Count.ToString());
+
             
+            foreach (Library lib in librariesThatWillBeScanned)
+            {
+                sb.Append(lib.LibraryId.ToString());
+                sb.Append(" ");
+
+                //int numDays
+                //List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary();
+
+                //sb.AppendLine(librosEscanear);
+
+                // Segunda línea: librerías que se van a escanear 
+
+                // Tercera línea: 
+            }
+
+        }
+
+        private int BooksThatWillBeScannedFromLibrary()
+        {
+            throw new NotImplementedException();
+        }
+
+        private List<Library> GetOptimizedLibrariesPerDays()
+        {
+            throw new NotImplementedException();
         }
     }
 }
