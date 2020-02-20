@@ -114,8 +114,17 @@ namespace HashCode.Entities
             List<Book> totalBooksScanned = new List<Book>();
             for (int i = 0; i <= numTotalBooks; i++)
             {
-                var book = lib.Libros[i];
-                totalBooksScanned.Add(book);
+                if (lib.Libros.Count() <= i)
+                {
+                    var book = lib.Libros[i];
+                    totalBooksScanned.Add(book);
+                }
+                else 
+                {
+                    break;
+                }
+                
+         
             }
 
             return totalBooksScanned;

@@ -69,6 +69,8 @@ namespace HashCode
             }
 
             Console.WriteLine("\t" + resolver.Result());
+
+            Console.ReadLine();
         }
 
         
