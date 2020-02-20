@@ -26,18 +26,43 @@ namespace HashCode.Entities
 
         public void ReadScoreLine(string secondLine)
         {
+            BookList = new List<Book>();
+
             string[] dta = secondLine.Split(' ');
             for (int i = 0; 0 < dta.Length; i++)
             {
                 var book = new Book();
                 book.Id = i;
                 book.Puntuacion = int.Parse(dta[i]);
+
+                BookList.Add(book);
             }
+        }
+
+        public void ReadDefineLibrary()
+        {
+
+        }
+
+        public void ReadBooksId(string booksId)
+        {
+            // En la última librería, añadir los libros del array de libros
+
+            string[] dta = booksId.Split(' ');
+            for (int i = 0; i < dta.Length; i++)
+            {
+
+
+                var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
+
+
+            }
+
         }
 
         public void Result()
         {
-
+            
         }
     }
 }
