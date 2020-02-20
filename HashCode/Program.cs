@@ -27,7 +27,8 @@ namespace HashCode
             {
 
                 cont++;
-        
+          
+
 
                 // primera linea
                 if (cont == 1)
@@ -50,23 +51,24 @@ namespace HashCode
                     resolver.ReadBooksId(line, idLibreria);
                 }
 
-                if (cont > 4)
+                if (cont >= 4)
                 {
                     cont = 2;
                     idLibreria++;
+
+
+
                 }
-          
-
-
-
-
+      
 
 
 
 
                 // Use a tab to indent each line of the file.
-                Console.WriteLine("\t" + line);
+
             }
+
+            Console.WriteLine("\t" + resolver.Result());
         }
 
         

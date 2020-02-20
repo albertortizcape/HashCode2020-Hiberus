@@ -14,6 +14,10 @@ namespace HashCode.Entities
 
         public List<Book> BookList;
 
+        public Resolver()
+        {
+         
+        }
         public void ReadFirstLine(string firstLine)
         {
             string[] dta = firstLine.Split(' ');
@@ -56,10 +60,12 @@ namespace HashCode.Entities
         public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
+          
             var library = Libraries[libraryId];
             library.Libros = new List<Book>();
+
             string[] dta = booksId.Split(' ');
-            for (int i = 0; i < dta.Length-1; i++)
+            for (int i = 0; i <= dta.Length-1; i++)
             {
                 var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
            
