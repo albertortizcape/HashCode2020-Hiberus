@@ -122,7 +122,45 @@ namespace HashCode.Entities
             // Coger el número de días que tengo totales
             // Recorrer todas las librerías e ir descontando tiempo hasta que el resultado sea 0 (nunca menor que 0)
             // Devolver las librerías que se pueden escanear en esos días
-            throw new NotImplementedException();
+            int totaldays = DiasEscaneo;
+            List<Library> librarys = new List<Library>();
+            bool primero = false;
+            //contador que lleva la posicion
+            int contstart = 0;
+
+            foreach(Library lib in Libraries)
+            {
+                if (!primero)
+                {
+                    if(lib.DiasTotalesRegistro <= totaldays)
+                    {
+                        lib.StartDay = contstart;
+                        contstart += lib.DiasTotalesRegistro;
+                        librarys.Add(lib);
+                        primero = true;
+                        totaldays -= lib.DiasTotalesRegistro;
+                    }
+                   
+                }
+                if(totaldays > 0)
+                {
+                    if(totaldays - lib.DiasTotalesRegistro>=0)
+                    {
+                        lib.StartDay = contstart;
+                        contstart += lib.DiasTotalesRegistro;
+                        librarys.Add(lib);
+                        primero = true;
+                        totaldays -= lib.DiasTotalesRegistro;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
+            return librarys;
         }
     }
 }
