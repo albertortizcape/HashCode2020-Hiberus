@@ -92,12 +92,12 @@ namespace HashCode.Entities
 
         private void GetLibraryString(StringBuilder sb, Library lib)
         {
-            /*int numDays = ;
-            List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary(numDays, lib);
+            int numDaysFromSignedUp = 0;
+            List<Book> librosEscanear = BooksThatWillBeScannedFromLibrary(numDaysFromSignedUp, lib);
 
             GetFirstLineFromLibrary(sb, lib.LibraryId, librosEscanear);
 
-            GetSecondLineFromLibrary(sb, librosEscanear);*/
+            GetSecondLineFromLibrary(sb, librosEscanear);
         }
 
         private void GetSecondLineFromLibrary(StringBuilder sb, List<Book> librosEscanear)

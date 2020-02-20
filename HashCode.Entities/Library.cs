@@ -11,6 +11,8 @@ namespace HashCode.Entities
         public int LibraryId { get; set; }
         public List<Book> Libros { get; set; }
 
+        public int StartDay { get; set; }
+
         // Número de días que cuesta realizar el registro de todos los libros
         public int DiasTotalesRegistro { get; set; }
 
