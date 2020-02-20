@@ -14,12 +14,6 @@ namespace HashCode.Entities
 
         public List<Book> BookList;
 
-
-        public string ReadData(string dataInput)
-        {
-
-        }
-
         public void ReadFirstLine(string firstLine)
         {
             string[] dta = firstLine.Split(' ');
@@ -30,7 +24,6 @@ namespace HashCode.Entities
             DiasEscaneo = int.Parse(dta[2]);
         }
 
-
         public void ReadScoreLine(string secondLine)
         {
             string[] dta = secondLine.Split(' ');
@@ -40,6 +33,11 @@ namespace HashCode.Entities
                 book.Id = i;
                 book.Puntuacion = int.Parse(dta[i]);
             }
+        }
+
+        public void Result()
+        {
+
         }
     }
 }
