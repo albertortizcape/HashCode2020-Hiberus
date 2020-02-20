@@ -44,20 +44,17 @@ namespace HashCode.Entities
 
         }
 
-        public void ReadBooksId(string booksId)
+        public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
+            var library = Libraries[libraryId];
 
             string[] dta = booksId.Split(' ');
             for (int i = 0; i < dta.Length; i++)
             {
-
-
                 var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
-
-
+                library.Libros.Add(book);
             }
-
         }
 
         public void Result()
