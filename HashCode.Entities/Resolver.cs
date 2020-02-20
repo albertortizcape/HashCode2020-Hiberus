@@ -29,7 +29,7 @@ namespace HashCode.Entities
             BookList = new List<Book>();
 
             string[] dta = secondLine.Split(' ');
-            for (int i = 0; 0 < dta.Length-1; i++)
+            for (int i = 0; i < dta.Length-1; i++)
             {
                 var book = new Book();
                 book.Id = i;
