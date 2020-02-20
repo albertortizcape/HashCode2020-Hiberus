@@ -43,7 +43,7 @@ namespace HashCode.Entities
             }
         }
 
-        public void ReadDefineLibrary(string linea)
+        public void ReadDefineLibrary(string linea, int libraryId)
         {
             string[] dta = linea.Split(' ');
             int numeroLibro = int.Parse(dta[0]);
@@ -51,25 +51,38 @@ namespace HashCode.Entities
             int numeroEnvio = int.Parse(dta[2]);
 
             Library libra = new Library();
+            libra.LibraryId = libraryId;
+
             libra.NumeroLibrosEnvioDia = numeroEnvio;
             libra.DiasTotalesRegistro = numeroDias;
 
             Libraries.Add(libra);
+
+            Console.WriteLine(numeroLibro + " " + numeroDias);
         }
 
         public void ReadBooksId(string booksId, int libraryId)
         {
             // En la última librería, añadir los libros del array de libros
-          
+
+            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + " Get Library " + libraryId);
             var library = Libraries[libraryId];
+            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + " Get Library " + libraryId);
+
             library.Libros = new List<Book>();
 
+            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + " split");
             string[] dta = booksId.Split(' ');
+            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss") + " end split");
+
             for (int i = 0; i <= dta.Length-1; i++)
             {
                 var book = BookList.FirstOrDefault(b => b.Id == int.Parse(dta[i]));
-           
-                library.Libros.Add(book);
+
+                if (book != null)
+                {
+                    library.Libros.Add(book);
+                }
             }
         }
 
@@ -114,9 +127,9 @@ namespace HashCode.Entities
             List<Book> totalBooksScanned = new List<Book>();
             for (int i = 0; i <= numTotalBooks; i++)
             {
-                if (lib.Libros.Count() <= i)
+                if (i < lib.Libros.Count())
                 {
-                    var book = lib.Libros[i];
+                    var book = lib.LibrosOrdenados[i];
                     totalBooksScanned.Add(book);
                 }
                 else 
@@ -173,7 +186,7 @@ namespace HashCode.Entities
                     }
                    
                 }
-                if(totaldays > 0)
+                else if(totaldays > 0)
                 {
                     if(totaldays - lib.DiasTotalesRegistro>=0)
                     {
